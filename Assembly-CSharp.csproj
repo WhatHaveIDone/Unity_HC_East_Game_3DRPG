@@ -596,11 +596,20 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Recorder.Editor">
+      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Recorder.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder">
+      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Recorder.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
@@ -611,8 +620,17 @@
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Postprocessing.Editor">
+      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
@@ -620,23 +638,8 @@
     <Reference Include="UnityEditor.UI">
       <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Recorder.Editor">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Recorder.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Recorder">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Recorder.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    <Reference Include="Unity.2D.Sprite.Editor">
+      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
