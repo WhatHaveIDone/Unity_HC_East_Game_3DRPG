@@ -62,9 +62,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AcquireChan\Scripts\AcquireChanController.cs" />
+    <Compile Include="Assets\AcquireChan\Scripts\MotionChanger.cs" />
+    <Compile Include="Assets\AcquireChan\Scripts\SimpleFollowCam.cs" />
+    <Compile Include="Assets\AllSkyFree\AllSkyFree_Menu.cs" />
     <Compile Include="Assets\Jammo-Character\Scripts\CharacterSkinController.cs" />
     <Compile Include="Assets\Jammo-Character\Scripts\MovementInput.cs" />
     <None Include="Assets\Front\mamelon\仕様説明.txt" />
+    <None Include="Assets\AcquireChan\Models\Shaders\imagine_chara_parts_body.shader" />
+    <None Include="Assets\paladin\shaders\pbrDoublesided.shader" />
+    <None Include="Assets\AllSkyFree\AllSkyFree_Readme.txt" />
+    <None Include="Assets\AcquireChan\Models\Shaders\imagine_chara.shader" />
+    <None Include="Assets\Character_Witch_Dragon\ReadMe.txt" />
+    <None Include="Assets\AcquireChan\Models\Shaders\imagine_chara_parts_hair.shader" />
+    <None Include="Assets\AcquireChan\Models\Shaders\imagine_chara_parts_face.shader" />
+    <None Include="Assets\Materials\ToonShader.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -594,52 +606,52 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.3f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Cinemachine">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Recorder.Editor">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Recorder.Editor.dll</HintPath>
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Recorder.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Recorder">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Recorder.dll</HintPath>
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Recorder.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Editor">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Postprocessing.Runtime">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.UI">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>E:/GitHub/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Postprocessing.Runtime">
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>E:/GitHub/20200817/Unity_HC_East_Game_3DRPG/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup></ItemGroup>
