@@ -82,6 +82,8 @@
     <Compile Include="Assets\JMO Assets\WarFX\Spawn System\CFX_SpawnSystem.cs" />
     <Compile Include="Assets\Jammo-Character\Scripts\CharacterSkinController.cs" />
     <Compile Include="Assets\Jammo-Character\Scripts\MovementInput.cs" />
+    <Compile Include="Assets\Scripts\LearnCoroutine.cs" />
+    <Compile Include="Assets\Scripts\MenuManager.cs" />
     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft.shader" />
     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft Scroll.shader" />
     <None Include="Assets\Front\mamelon\仕様説明.txt" />
