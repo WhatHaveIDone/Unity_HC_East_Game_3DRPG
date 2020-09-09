@@ -85,6 +85,8 @@
     <Compile Include="Assets\Scripts\CameraCtrl.cs" />
     <Compile Include="Assets\Scripts\LearnCoroutine.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\NPC.cs" />
+    <Compile Include="Assets\Scripts\NPCData.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft.shader" />
     <None Include="Assets\JMO Assets\WarFX\Shaders\WFX_S Multiply Soft Scroll.shader" />
