@@ -18,7 +18,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftFoot' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -26,7 +27,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -105,7 +106,245 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Npc@Talking(Clone)
+      parentName: 
+      position: {x: 0.011627252, y: -0.015718555, z: -0.020296218}
+      rotation: {x: -0.029703083, y: -0.012774391, z: 0.018202696, w: 0.9993114}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Model
+      parentName: Npc@Talking(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Root
+      parentName: Npc@Talking(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Control_Locator
+      parentName: Root
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Locator_Head
+      parentName: Control_Locator
+      position: {x: 3.2899497e-15, y: 0.5, z: 0.65999997}
+      rotation: {x: -0.000000015893255, y: -0.00000003774895, z: -0.000000021855698,
+        w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Locator_Pelvis
+      parentName: Control_Locator
+      position: {x: -0, y: 0.22, z: 0.043}
+      rotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Control_Leg_L
+      parentName: Control_Locator
+      position: {x: 0.099999994, y: -0.00027757883, z: 0.000000009408781}
+      rotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Control_Leg_R
+      parentName: Control_Locator
+      position: {x: -0.099999994, y: -0.00027757883, z: 0.000000008261977}
+      rotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Upvector_Leg_R
+      parentName: Control_Locator
+      position: {x: 0.099999994, y: 0.10336121, z: 0.243}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Upvector_Leg_L
+      parentName: Control_Locator
+      position: {x: -0.099999994, y: 0.10336121, z: 0.243}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Skeleton_Pelvis
+      parentName: Root
+      position: {x: -0, y: 0.22, z: 0.043}
+      rotation: {x: 0.49999997, y: -0.5, z: -0.50000006, w: -0.50000006}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Locator_Leg_R
+      parentName: Skeleton_Pelvis
+      position: {x: 0.014, y: -0.099999994, z: -0.039999995}
+      rotation: {x: 0.72943527, y: -0.6834262, z: -0.014279613, w: 0.02547473}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Skeleton_UpperLeg_R
+      parentName: Locator_Leg_R
+      position: {x: -0.0000000032464098, y: 5.0270543e-10, z: -4.0417028e-10}
+      rotation: {x: -0.0024846941, y: -0.19124377, z: 0.9809714, w: -0.033390224}
+      scale: {x: 1.0000004, y: 1.0000046, z: 1.000005}
+    - name: FullBodyIK
+      parentName: Skeleton_UpperLeg_R
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 1.110223e-16, y: -6.1364036e-17, z: -2.0937629e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Skeleton_Leg_R
+      parentName: Skeleton_UpperLeg_R
+      position: {x: -0.000000003791787, y: -0.02399745, z: 0.07620625}
+      rotation: {x: 0.032389123, y: -0.0000000069849175, z: 0.0000000036670817, w: 0.9994753}
+      scale: {x: 1.0000007, y: 0.9999997, z: 1}
+    - name: Skeleton_Foot_R
+      parentName: Skeleton_Leg_R
+      position: {x: -2.7755576e-17, y: 1.01753245e-10, z: 0.10363878}
+      rotation: {x: -0.09413847, y: -0.09404481, z: 0.7007969, w: -0.7008404}
+      scale: {x: 0.9999985, y: 0.9999984, z: 1.0000008}
+    - name: Locator_Leg_L
+      parentName: Skeleton_Pelvis
+      position: {x: 0.014, y: 0.099999994, z: -0.039999995}
+      rotation: {x: -0.6277643, y: 0.7770087, z: 0.0023547995, w: 0.046519652}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Skeleton_UpperLeg_L
+      parentName: Locator_Leg_L
+      position: {x: -0.0000000032464094, y: 5.0270543e-10, z: -4.0417034e-10}
+      rotation: {x: -0.01725561, y: 0.12786782, z: -0.9855549, w: -0.1096976}
+      scale: {x: 1.000001, y: 1.0000093, z: 1.0000092}
+    - name: FullBodyIK (2)
+      parentName: Skeleton_UpperLeg_L
+      position: {x: -6.938894e-17, y: 0, z: 1.3877788e-16}
+      rotation: {x: -8.326673e-17, y: 9.638334e-17, z: 3.2036692e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Skeleton_Leg_L
+      parentName: Skeleton_UpperLeg_L
+      position: {x: 0.000000010908582, y: -0.023999583, z: 0.07657327}
+      rotation: {x: 0.02567306, y: 0.000000016763806, z: 0.00000007660128, w: 0.99967045}
+      scale: {x: 0.9999998, y: 0.9999946, z: 0.9999946}
+    - name: Skeleton_Foot_L
+      parentName: Skeleton_Leg_L
+      position: {x: 3.0531133e-16, y: -6.371531e-10, z: 0.10363879}
+      rotation: {x: -0.09541861, y: -0.09547966, z: 0.69888866, w: -0.702377}
+      scale: {x: 1.0000001, y: 1.000002, z: 1.0000002}
+    - name: Skeleton_Spine01
+      parentName: Skeleton_Pelvis
+      position: {x: 0.008, y: 5.957703e-10, z: 0.091}
+      rotation: {x: -0.000000044703484, y: 0.00000011920929, z: -0.000000044703484,
+        w: 1}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000002}
+    - name: Skeleton_Spine02
+      parentName: Skeleton_Spine01
+      position: {x: 0.035, y: 0.0000000026506393, z: 0.129}
+      rotation: {x: 0.000000044703484, y: 0.000000029802322, z: -0.000000014901154,
+        w: 1}
+      scale: {x: 1.0000001, y: 1.0000004, z: 1.0000002}
+    - name: Skeleton_Head
+      parentName: Skeleton_Spine02
+      position: {x: -3.3087225e-24, y: -1.9721523e-31, z: 0.06}
+      rotation: {x: -0.50000006, y: 0.5, z: 0.49999994, w: -0.5}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
+    - name: Skeleton_Hair_Front01_R
+      parentName: Skeleton_Head
+      position: {x: 0.16703765, y: 0.182, z: 0.050000023}
+      rotation: {x: -0.009029732, y: -0.70367396, z: 0.7102938, w: -0.015626429}
+      scale: {x: 0.9999996, y: 0.99999934, z: 0.99999934}
+    - name: Skeleton_Hair_Front02_R
+      parentName: Skeleton_Hair_Front01_R
+      position: {x: 5.551115e-17, y: 6.938894e-18, z: 0.10500916}
+      rotation: {x: -0.1787596, y: 0.17859752, z: -0.9674624, w: 0.012820652}
+      scale: {x: 0.9999999, y: 1.0000001, z: 1}
+    - name: Skeleton_Hair_Front01_L
+      parentName: Skeleton_Head
+      position: {x: -0.16703768, y: 0.18199998, z: 0.050000027}
+      rotation: {x: -0.015541872, y: -0.70356023, z: 0.7104064, w: -0.009180323}
+      scale: {x: 0.9999996, y: 0.99999946, z: 0.99999946}
+    - name: Skeleton_Hair_Front02_L
+      parentName: Skeleton_Hair_Front01_L
+      position: {x: -0, y: 0, z: 0.10500916}
+      rotation: {x: 0.18438138, y: 0.17278773, z: -0.9662848, w: -0.04941299}
+      scale: {x: 0.9999992, y: 0.9999997, z: 0.99999994}
+    - name: Skeleton_Hat_R
+      parentName: Skeleton_Head
+      position: {x: 0.158, y: 0.498, z: -0.07}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Skeleton_Hat_L
+      parentName: Skeleton_Head
+      position: {x: -0.158, y: 0.498, z: -0.07}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Skeleton_Arm_R
+      parentName: Skeleton_Spine02
+      position: {x: 4.6230326e-18, y: -0.0755, z: -0.027}
+      rotation: {x: 0.000000022329393, y: 0.7071068, z: -0.7071068, w: 0.00000008694526}
+      scale: {x: 1.0000005, y: 1.0000006, z: 1.0000005}
+    - name: Skeleton_ForArm_R
+      parentName: Skeleton_Arm_R
+      position: {x: -0, y: 5.551115e-17, z: 0.1045}
+      rotation: {x: 0.000000060033884, y: 0.005555229, z: 0.000000010288008, w: 0.9999846}
+      scale: {x: 0.9999997, y: 0.99999994, z: 1.0000001}
+    - name: Skeleton_Hand_R
+      parentName: Skeleton_ForArm_R
+      position: {x: 1.2576745e-17, y: -5.551115e-17, z: 0.09000555}
+      rotation: {x: -0.35439834, y: -0.59116775, z: -0.427929, w: -0.5846359}
+      scale: {x: 1, y: 1.0000002, z: 1}
+    - name: Locator_Eff
+      parentName: Skeleton_Hand_R
+      position: {x: -0.0059999553, y: -0.016999984, z: 0.357}
+      rotation: {x: 0.67652607, y: -0.047834676, z: 0.17514707, w: 0.7136861}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Skeleton_Arm_L
+      parentName: Skeleton_Spine02
+      position: {x: -4.6230363e-18, y: 0.0755, z: -0.027}
+      rotation: {x: -0.00000011771165, y: 0.7071068, z: 0.70710677, w: -0.000000026186692}
+      scale: {x: 1.0000005, y: 1.0000001, z: 1.0000004}
+    - name: Skeleton_ForArm_L
+      parentName: Skeleton_Arm_L
+      position: {x: -0, y: -5.551115e-17, z: 0.1045}
+      rotation: {x: -3.5951644e-10, y: 0.0055552293, z: -0.000000063449875, w: 0.9999846}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000004}
+    - name: Skeleton_Hand_L
+      parentName: Skeleton_ForArm_L
+      position: {x: 4.3368087e-19, y: -5.551115e-17, z: 0.09000555}
+      rotation: {x: 0.000000029003788, y: 0.70316774, z: 0.0000000149774, w: 0.71102405}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
+    - name: Skeleton_Skirt05A_R
+      parentName: Skeleton_Pelvis
+      position: {x: 0.111499995, y: -0.031999998, z: -0.017999995}
+      rotation: {x: 0.026006173, y: 0.97322094, z: -0.04514989, w: 0.22388893}
+      scale: {x: 0.9999999, y: 1.0000002, z: 1.0000001}
+    - name: Skeleton_Skirt05A_L
+      parentName: Skeleton_Pelvis
+      position: {x: 0.111499995, y: 0.032000005, z: -0.017999995}
+      rotation: {x: -0.093517065, y: 0.9690665, z: 0.029495537, w: 0.2264835}
+      scale: {x: 1, y: 1.0000002, z: 1.0000001}
+    - name: Skeleton_Skirt04A_R
+      parentName: Skeleton_Pelvis
+      position: {x: 0.081, y: -0.099999994, z: -0.013999997}
+      rotation: {x: 0.22676869, y: 0.9314017, z: -0.18399537, w: 0.21728462}
+      scale: {x: 1, y: 1.0000002, z: 1}
+    - name: Skeleton_Skirt04A_L
+      parentName: Skeleton_Pelvis
+      position: {x: 0.081, y: 0.099999994, z: -0.013999997}
+      rotation: {x: -0.3130841, y: 0.9060416, z: 0.1628156, w: 0.23357642}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000002}
+    - name: Skeleton_Skirt03A_R
+      parentName: Skeleton_Pelvis
+      position: {x: 0.019, y: -0.126, z: -0.013999997}
+      rotation: {x: 0.72587943, y: 0.6365425, z: -0.17678633, w: 0.19146642}
+      scale: {x: 1, y: 1, z: 0.9999999}
+    - name: Skeleton_Skirt03A_L
+      parentName: Skeleton_Pelvis
+      position: {x: 0.019, y: 0.126, z: -0.013999997}
+      rotation: {x: -0.70648503, y: 0.6580017, z: 0.18244267, w: 0.1860845}
+      scale: {x: 1.0000001, y: 1.0000004, z: 1.0000004}
+    - name: Skeleton_Skirt02A_R
+      parentName: Skeleton_Pelvis
+      position: {x: -0.036000002, y: -0.103, z: -0.0029999968}
+      rotation: {x: 0.888275, y: 0.39960772, z: -0.19355705, w: 0.11754535}
+      scale: {x: 1.0000001, y: 1, z: 0.9999999}
+    - name: Skeleton_Skirt02A_L
+      parentName: Skeleton_Pelvis
+      position: {x: -0.036000002, y: 0.103, z: -0.0029999968}
+      rotation: {x: -0.8760758, y: 0.42568767, z: 0.19694668, w: 0.11177318}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: Skeleton_Skirt01A_R
+      parentName: Skeleton_Pelvis
+      position: {x: -0.08349999, y: -0.04049998, z: -0.0024999967}
+      rotation: {x: -0.9686631, y: -0.16202538, z: 0.18636987, w: -0.026568573}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000004}
+    - name: Skeleton_Skirt01A_L
+      parentName: Skeleton_Pelvis
+      position: {x: -0.08349999, y: 0.0405, z: -0.0024999967}
+      rotation: {x: -0.97926736, y: 0.07480521, z: 0.18324961, w: 0.043118667}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000004}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -122,7 +361,7 @@ ModelImporter:
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

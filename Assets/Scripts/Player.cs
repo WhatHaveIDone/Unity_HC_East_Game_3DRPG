@@ -1,26 +1,50 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     #region 欄位 : 基本資料
     [Header("移動速度"),Range(0,500)]
     public float speed;
-        [Header("旋轉速度"), Range(0, 500)]
+    [Header("旋轉速度"), Range(0, 500)]
     public float turn;
-        [Header("攻擊力"), Range(0, 500)]
+    [Header("攻擊力"), Range(0, 500)]
     public float attack;
-        [Header("血量"), Range(0, 500)]
+    [Header("血量"), Range(0, 500)]
     public float hp;
-        [Header("魔力"), Range(0, 500)]
+    [Header("魔力"), Range(0, 500)]
     public float mp;
+    [Header("吃道具音效")]
+    public AudioClip soundProp;
+    [Header("任務數量")]
+    public Text textMission;
+
+    private int count;
 
     public float exp;
-    public int lv;
+    public int lv = 1;
 
     private Animator anim;
     private Rigidbody rig;
+    private AudioSource aud;
+    private NPC npc;
+
+    /// <summary> 攝影機根物件 </summary>
+    private Transform cam;
+
+    public Image barHp;
+    public Image barMp;
+    public Image barExp;
+
+    private float maxHp;
+    private float maxMp;
+    private float maxExp;
+
+    [HideInInspector]
+    /// <summary> 是否停止 </summary>
+    public bool stop;
 
     #endregion
     // ---------------------------------------------
@@ -40,23 +64,45 @@ public class Player : MonoBehaviour
         anim.SetFloat("Move", Mathf.Abs(v) + Mathf.Abs(h));
     }
 
+    void EatProp()
+    {
+        count++;                                                        // 遞增
+        textMission.text = "道具:" + count + "/" + npc.data.misCount;   // 更新內容      
 
+        // 
+        if (count == npc.data.misCount) npc.Finish();
+    }
+
+    /// <summary> 玩家被擊中受傷時 </summary>
+    /// <param name="damage"> 傷害值 </param>
+    /// <param name="direction"> 擊退方向 </param>
+    public void Hit(float damage, Transform direction)
+    {
+        // 扣血
+        hp -= damage;
+        // 對玩家的剛體 施加一個力  -> 玩家起飛
+        rig.AddForce(direction.forward*100 + direction.up*150);
+
+        barHp.fillAmount = hp / maxHp;
+        anim.SetTrigger("HurtTrigger");
+    }
     #endregion
     // ---------------------------------------------
-    
-    /// <summary> 攝影機根物件 </summary>
-    private Transform cam;
 
+   
     #region 事件:入口
     /// <summary> 喚醒 : 會在 Start 前執行一次 </summary>
     private void Awake()
     {
         // 取得元件<泛型>() - 泛型 : 任何類型
-       anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody>();
+        aud = GetComponent<AudioSource>();
 
         // 遊戲物件.尋找("物件名稱") --> 建議不要在 Update 內使用 會吃效能
         cam = GameObject.Find("攝影機根物件").transform;
+
+        npc = FindObjectOfType<NPC>();      // 取得NPC
     }
 
     /// <summary>
@@ -65,9 +111,19 @@ public class Player : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
+        if (stop) return;       // 如果 停止 就跳出
+
         Move();
+    }
 
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Skull")     // 當碰到"Skull"時
+        {
+            aud.PlayOneShot(soundProp);             // 播放音效
+            Destroy(collision.gameObject);          // 刪除道具
+            EatProp();                              // 呼叫吃道具
+        }
     }
 
     #endregion
