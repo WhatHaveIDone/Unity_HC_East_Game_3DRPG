@@ -7,6 +7,8 @@ TagManager:
   - PlayerEyes
   - FxTemporaire
   - Skull
+  - Enemy
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

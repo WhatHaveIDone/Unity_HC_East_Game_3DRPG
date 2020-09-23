@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     [Header("旋轉速度"), Range(0, 500)]
     public float turn;
     [Header("攻擊力"), Range(0, 500)]
-    public float attack;
+    public float attack = 500;
     [Header("血量"), Range(0, 500)]
     public float hp;
     [Header("魔力"), Range(0, 500)]
@@ -85,7 +85,27 @@ public class Player : MonoBehaviour
 
         barHp.fillAmount = hp / maxHp;
         anim.SetTrigger("HurtTrigger");
+
+        if (hp <= 0) Dead();            // 如果 血量 <= 0 就 死亡
     }
+
+    /// <summary> 死亡 </summary>S
+    void Dead()
+    {
+        // this.enabled = false;        // 第一種寫法 ,this 此腳本 
+        enabled = false;                // 此腳本.啟動
+        anim.SetBool("Wasted", true);   // 死亡動畫
+    }
+
+    ///<summary> 攻擊 </summary>
+    void Attack()
+    {
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            anim.SetTrigger("AtkTrigger");
+        }
+    }
+
     #endregion
     // ---------------------------------------------
 
@@ -103,6 +123,9 @@ public class Player : MonoBehaviour
         cam = GameObject.Find("攝影機根物件").transform;
 
         npc = FindObjectOfType<NPC>();      // 取得NPC
+
+        maxHp = hp;
+        maxMp = mp;
     }
 
     /// <summary>
@@ -116,6 +139,11 @@ public class Player : MonoBehaviour
         Move();
     }
 
+    public void Update()
+    {
+        Attack();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Skull")     // 當碰到"Skull"時
@@ -126,14 +154,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    #endregion
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.tag == "Enemy")
+        {
+            other.GetComponent<Enemy>().Hit(attack,transform);
+        }
     }
 
-    void Update()
-    {
-        
-    }
+    #endregion 
 }

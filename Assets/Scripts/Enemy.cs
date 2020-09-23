@@ -22,10 +22,13 @@ public class Enemy : MonoBehaviour
     public float rangeAttack = 1.0f;
     [Header(" 攻擊冷卻時間 "), Range(0, 10)]
     public float cd = 3.5f;
+    [Header(" 面向玩家的速度 "), Range(0, 100)]
+    public float turn = 10;
 
     private NavMeshAgent navm;  // AI尋路組件
     private Player ply;
     private Animator anim;
+    private Rigidbody rig;      // 剛體
 
     private float timer;        // 計時器
     #endregion
@@ -44,24 +47,49 @@ public class Enemy : MonoBehaviour
     /// <summary> 攻擊 </summary>
     void Attack()
     {
+        // 取得面向的的角度 B 角度 = 四元.面向角度(玩家 - 自己)
+        Quaternion look = Quaternion.LookRotation(ply.transform.position - transform.position);
+        // 怪物.角度 = 四元.差值(A角度, B角度, 百分比)
+        transform.rotation = Quaternion.Slerp(transform.rotation, look, Time.deltaTime*turn);
+
         timer += Time.deltaTime;            // 累加時間
         if(timer >=cd)                      // 如果計時器
         {
-            timer = 0;                      // 
-            anim.SetTrigger("AtkTrigger");  // 
+            timer = 0;                      // 計時器歸零
+            anim.SetTrigger("AtkTrigger");  // 攻擊動畫
         }
         }
 
-    void Hit()
-    { }
+    /// <summary> 受傷 </summary>
+    public void Hit(float damage, Transform direction)
+    {
+        hp -= damage;
+        rig.AddForce(direction.forward * 30 + direction.up * 50);
 
+        anim.SetTrigger("HurtTrigger");
+        if (hp <= 0) Dead();
+    }
+
+    /// <summary> 死亡 </summary>
     void Dead()
-    { }
+    {
+        // this.enabled = false;        // 第一種寫法 ,this 此腳本 
+        enabled = false;                // 此腳本.啟動
+        anim.SetBool("Wasted", true);   // 死亡動畫
+        DropProp();                     // 掉落道具
+    }
 
-    void DropProp()
-    { }
+    /// <summary> 掉落道具 </summary>
+    void DropProp()                     
+    {
+        float r = Random.Range(0f,1f);  // 取得隨機值介於 0~1
 
-
+        if (r <= prop)                    // 如果 隨機值 小於等於 機率
+        {
+            // 生成(物件, 座標, 角度)
+            Instantiate(skull, transform.position + transform.up * 1.5f, transform.rotation);
+        }
+    }
     #endregion
 
     #region  事件
@@ -69,6 +97,8 @@ public class Enemy : MonoBehaviour
     {
         navm = GetComponent<NavMeshAgent>();    // 
         anim = GetComponent<Animator>();        // 
+        rig = GetComponent<Rigidbody>();        // 
+
         ply = FindObjectOfType<Player>();       // 
 
         navm.speed = speed;                     // 更新速度
