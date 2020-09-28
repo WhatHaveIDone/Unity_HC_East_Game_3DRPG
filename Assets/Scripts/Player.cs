@@ -20,27 +20,36 @@ public class Player : MonoBehaviour
     public AudioClip soundProp;
     [Header("任務數量")]
     public Text textMission;
-
-    private int count;
+    [Header("角色吧條")]
+    public Image barHp;
+    public Image barMp;
+    public Image barExp;
+    
 
     public float exp;
     public int lv = 1;
+    public Text textLv;
+
+    [Header("技能")]
+    public GameObject rock;
+    public Transform pointRock;
+    public float costRock;
+    public float damageRock = 50;
+
+    /// <summary> 攝影機根物件 </summary>
+    private Transform cam;
+  
+    private int count;
+    public float maxHp ;
+    public float maxMp ;
+    public float maxExp ;
+    // 浮點數陣列
+    public float[] exps;
 
     private Animator anim;
     private Rigidbody rig;
     private AudioSource aud;
     private NPC npc;
-
-    /// <summary> 攝影機根物件 </summary>
-    private Transform cam;
-
-    public Image barHp;
-    public Image barMp;
-    public Image barExp;
-
-    private float maxHp;
-    private float maxMp;
-    private float maxExp;
 
     [HideInInspector]
     /// <summary> 是否停止 </summary>
@@ -49,6 +58,7 @@ public class Player : MonoBehaviour
     #endregion
     // ---------------------------------------------
     #region 方法:功能
+    /// <summary> 角色移動 </summary>
     private void Move()
     {
         float h = Input.GetAxis("Horizontal");  // (A D & 左 右) : A 左 -1 , D 右 1 , 沒按 0
@@ -64,6 +74,7 @@ public class Player : MonoBehaviour
         anim.SetFloat("Move", Mathf.Abs(v) + Mathf.Abs(h));
     }
 
+    /// <summary> 拾取道具 </summary> 
     void EatProp()
     {
         count++;                                                        // 遞增
@@ -89,7 +100,7 @@ public class Player : MonoBehaviour
         if (hp <= 0) Dead();            // 如果 血量 <= 0 就 死亡
     }
 
-    /// <summary> 死亡 </summary>S
+    /// <summary> 死亡 </summary>
     void Dead()
     {
         // this.enabled = false;        // 第一種寫法 ,this 此腳本 
@@ -106,10 +117,61 @@ public class Player : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 經驗值
+    /// </summary>
+    /// <param name="expGet"> 取得經驗值 </param>
+    public void Exp(float expGet)
+    {
+        exp += expGet;                      // 經驗值累加
+        barExp.fillAmount = exp / maxExp;   // 更新經驗值吧條
+        while (exp >= maxExp) LevelUp();    // 如果 目前經驗值>=最大經驗值 就 升級
+    }
+
+    /// <summary> 升級 </summary>
+    public void LevelUp()
+    {
+        lv++;                               // 等級遞增
+        textLv.text = "Lv" + lv;            // 更新等級介面
+
+        // 升級後數值改變 
+        maxHp += 20;
+        maxMp += 5;
+        attack += 10;
+
+        // 升級後血量魔力全滿
+        hp = maxHp;
+        mp = maxMp;
+
+        barHp.fillAmount = 1;
+        barMp.fillAmount = 1;
+
+        // 把多餘的經驗值補回去   120 -= 100(20) exp-maxExp=exp
+        exp -= maxExp;
+        // 最大經驗值 = 經驗值需求[等級-1]
+        maxExp = exps[lv - 1];
+        // 更新經驗值長度 = 目前經驗值 / 最大經驗值
+        barExp.fillAmount = exp / maxExp;
+    }
+
+    ///<summary> </summary>
+    void SkillRock()
+    {
+        // 如果 按下右鍵 並且 魔力 >= 技能消耗
+        if(Input.GetKeyDown(KeyCode.Mouse1) && mp>= costRock)
+        {
+            // 播放動畫
+            anim.SetTrigger("Skill");
+            // 生成(物件,座標,角度)
+            Instantiate(rock, pointRock.position, pointRock.rotation);
+            // 扣除消耗量
+            mp -= costRock;
+            // 更新魔力吧條
+            barMp.fillAmount = mp / maxMp;
+        }
+    }
     #endregion
     // ---------------------------------------------
-
-   
     #region 事件:入口
     /// <summary> 喚醒 : 會在 Start 前執行一次 </summary>
     private void Awake()
@@ -126,6 +188,13 @@ public class Player : MonoBehaviour
 
         maxHp = hp;
         maxMp = mp;
+
+        // 經驗值需求 總共有99筆
+        exps = new float[99];
+
+        // 迴圈執行每一筆經驗值需求 = 100*等級
+        // 陣列.Length 為陣列的數量 此範例為 99
+        for (int i = 0; i < exps.Length; i++) exps[i] = 100 * (i + 1);
     }
 
     /// <summary>
@@ -141,7 +210,10 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        Attack();
+        Attack();                               // 攻擊
+        SkillRock();                            // 技能
+        Restore(hp,restoreHp,maxHp,barHp);      // 回血
+        Restore(mp, restoreMp, maxMp, barMp);   // 回魔
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -162,5 +234,38 @@ public class Player : MonoBehaviour
         }
     }
 
+    /*
+    [Header("回魔")]
+    public float restoreMp = 5;
+    void RestoreMp()
+    {
+        mp += restoreMp * Time.deltaTime;   // 每秒回復
+        mp = Mathf.Clamp(mp, 0, maxMp);     // 夾住數值(數值,0,最大值)
+        barMp.fillAmount = mp / maxMp;      // 更新介面
+    }
+    */
+    [Header("回魔量/每秒")]
+    public float restoreMp = 5;
+    [Header("回血量/每秒")]
+    public float restoreHp = 10;
+
+    /// <summary>
+    /// 恢復數值
+    /// </summary>
+    /// <param name="value">要恢復的值</param>
+    /// <param name="restore">每秒恢復多少</param>
+    /// <param name="max">要恢復的值最大值</param>
+    /// <param name="bar">要更新的吧條</param>
+    void Restore(float value,float restore, float max, Image bar)
+    {
+        value += restore * Time.deltaTime;
+        value = Mathf.Clamp(value, 0, max);
+        bar.fillAmount = value / max;
+    }
+
+
     #endregion 
+
+
+
 }

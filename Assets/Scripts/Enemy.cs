@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     public float turn = 10;
 
     private NavMeshAgent navm;  // AI尋路組件
-    private Player ply;
+    private Player ply;         // 玩家角色
     private Animator anim;
     private Rigidbody rig;      // 剛體
 
@@ -73,10 +73,11 @@ public class Enemy : MonoBehaviour
     /// <summary> 死亡 </summary>
     void Dead()
     {
-        // this.enabled = false;        // 第一種寫法 ,this 此腳本 
-        enabled = false;                // 此腳本.啟動
-        anim.SetBool("Wasted", true);   // 死亡動畫
-        DropProp();                     // 掉落道具
+        // this.enabled = false;                    // 第一種寫法 ,this 此腳本 
+        GetComponent<Collider>().enabled = false;   // 此腳本.啟動
+        anim.SetBool("Wasted", true);               // 死亡動畫
+        DropProp();                                 // 掉落道具
+        ply.Exp(exp);                               // 
     }
 
     /// <summary> 掉落道具 </summary>
@@ -105,7 +106,7 @@ public class Enemy : MonoBehaviour
         navm.stoppingDistance = rangeAttack;    // 更新停止距離
     }
 
- void Update()
+    void Update()
     {
         Move();
     }
@@ -119,10 +120,22 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         print(other.name);
-
         if(other.name == "CharaPlayer")
         {
             other.GetComponent<Player>().Hit(attack, transform);
+        }
+    }
+
+    /// <summary>
+    /// 有勾選 Collision 與 Send Collision Messages 的粒子碰到後會執行一次
+    /// </summary>
+    /// <param name="other"></param>
+    private void OnParticleCollision(GameObject other)
+    {
+        if(other.name == "Dust")
+        {
+            float damage = ply.damageRock;  // 取得流星雨的傷害值
+            Hit(damage, ply.transform);     // 受傷
         }
     }
 
