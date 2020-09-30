@@ -18,6 +18,12 @@ public class Player : MonoBehaviour
     public float mp;
     [Header("吃道具音效")]
     public AudioClip soundProp;
+    [Header("技能音效")]
+    public AudioClip sndSkillA;
+    [Header("攻擊音效")]
+    public AudioClip sndAtk;
+    [Header("受傷音效")]
+    public AudioClip sndHit;
     [Header("任務數量")]
     public Text textMission;
     [Header("角色吧條")]
@@ -79,7 +85,7 @@ public class Player : MonoBehaviour
     {
         count++;                                                        // 遞增
         textMission.text = "道具:" + count + "/" + npc.data.misCount;   // 更新內容      
-
+        aud.PlayOneShot(soundProp);
         // 
         if (count == npc.data.misCount) npc.Finish();
     }
@@ -89,6 +95,7 @@ public class Player : MonoBehaviour
     /// <param name="direction"> 擊退方向 </param>
     public void Hit(float damage, Transform direction)
     {
+        aud.PlayOneShot(sndHit);
         // 扣血
         hp -= damage;
         // 對玩家的剛體 施加一個力  -> 玩家起飛
@@ -113,6 +120,7 @@ public class Player : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
+            aud.PlayOneShot(sndAtk);
             anim.SetTrigger("AtkTrigger");
         }
     }
@@ -160,6 +168,7 @@ public class Player : MonoBehaviour
         // 如果 按下右鍵 並且 魔力 >= 技能消耗
         if(Input.GetKeyDown(KeyCode.Mouse1) && mp>= costRock)
         {
+            aud.PlayOneShot(sndSkillA);
             // 播放動畫
             anim.SetTrigger("Skill");
             // 生成(物件,座標,角度)
